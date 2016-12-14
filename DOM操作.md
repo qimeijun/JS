@@ -195,6 +195,8 @@ var ev = document.createEvent("Event");
 ev.initEvent("message", false, true); /*起泡参数变为true，div1的事件就会触发*/
 div2.dispatchEvent(ev);
 ```
+
+
 ### 获取元素相关计算后的值
 
 >  getComputeStyle(), currentStyle()
