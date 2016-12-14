@@ -215,6 +215,7 @@ getComputedStyle： IE9以上需要用cssFloat，其他标准的用float<br/>
 currentStyle： IE8及以下可用styleFloat或者float
 
 > getBoundingClientRect()、getClientRects()
+
 getBoundingClientRect() 该方法获得页面中某个元素的上、右、下、左分别相对浏览器视窗的位置。<br/>
 getBoundingClientRect是DOM元素到浏览器可视范围的距离（到浏览器顶部而不是文档顶部）.<br/>
 该函数返回一个Object对象，该对象有6个属性：top,lef,right,bottom,width,height；这里的top、left和css中的理解很相似，width、height是元素自身的宽高，但是right，bottom和css中的理解有点不一样。right是指元素右边界距窗口最左边的距离，bottom是指元素下边界距窗口最上面的距离。<br/>
