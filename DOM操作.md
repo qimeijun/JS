@@ -178,7 +178,7 @@ div.removeEventListener("click", function () {
 }, true);
 div.onclick = null;
 ```
-**IE8 及以下不支持addEventListener、removeEventListener， IE8绑定事件解除事件使用attachEvent()、detachEvent()**
+*IE8 及以下不支持addEventListener、removeEventListener， IE8绑定事件解除事件使用attachEvent()、detachEvent()*
 
 > 自定义事件 createEvent()
 ```
@@ -186,19 +186,18 @@ var div1 = document.getElementById("div1");
 div1.addEventListener("message", function(){
     console.log('test');
 }, false);
-
 var div2 = document.getElementById("div2");
 div2.addEventListener("message", function(e){
     console.log(this);
     console.log(e);
 }, false);
 var ev = document.createEvent("Event");
-ev.initEvent("message", false, true); // 起泡参数变为true，div1的事件就会触发
+ev.initEvent("message", false, true); /*起泡参数变为true，div1的事件就会触发*/
 div2.dispatchEvent(ev);
 ```
-###获取元素相关计算后的值
+### 获取元素相关计算后的值
 
-> getComputeStyle(), currentStyle()
+>  getComputeStyle(), currentStyle()
 IE8及以下使用currentStyle(), IE9+及其他标准浏览器用getComputedStyle()
 ```
 var div2 = document.getElementById("div2");
@@ -209,7 +208,7 @@ if (window.getComputedStyle) {
     result = div2.currentStyle["styleFloat"];
 }
 console.log(result);
-// document.defaultView返回document对象所关联的window
+/*document.defaultView返回document对象所关联的window*/
 ```
 getComputedStyle： IE9以上需要用cssFloat，其他标准的用float<br/>
 currentStyle： IE8及以下可用styleFloat或者float
@@ -217,9 +216,10 @@ currentStyle： IE8及以下可用styleFloat或者float
 > getBoundingClientRect()、getClientRects()
 
 getBoundingClientRect() 该方法获得页面中某个元素的上、右、下、左分别相对浏览器视窗的位置。<br/>
-getBoundingClientRect是DOM元素到浏览器可视范围的距离（到浏览器顶部而不是文档顶部）.<br/>
+getBoundingClientRect是DOM元素到浏览器可视范围的距离（到浏览器顶部而不是文档顶部）。<br/>
 该函数返回一个Object对象，该对象有6个属性：top,lef,right,bottom,width,height；这里的top、left和css中的理解很相似，width、height是元素自身的宽高，但是right，bottom和css中的理解有点不一样。right是指元素右边界距窗口最左边的距离，bottom是指元素下边界距窗口最上面的距离。<br/>
 getClientRects()是返回一个ClientRectList集合。
+
 ```
 var div1 = document.getElementById("div1");
 var rects1 = div1.getClientRects();
