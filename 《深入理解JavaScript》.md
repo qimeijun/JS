@@ -27,3 +27,16 @@ undefined典型用法：
 （3）对象没有赋值的属性，该属性的值为undefined。
 （4）函数没有返回值时，默认返回undefined。
 ```
+
+### switch...case 条件语句
+```
+switch (fruit) {
+  case 'apple':
+  case 'banana':
+  break;
+  case 'orange':
+  break;
+  default:
+}
+```
+case 后面可以跟数字类型、字符串类型、甚至是表达式。case 条件比较是使用严格比较模式（===）。
