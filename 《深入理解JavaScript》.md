@@ -66,3 +66,31 @@ var add = function getAdd (n) {
 ```
 var add = new Function ('x', 'y', 'return x + y');
 ```
+
+### IIFE
+因为**JavaScript中只有函数可以产生新的作用域，而代码块在作用域中是不起作用的**， 如果要开启一个新的作用域，除了建立函数就是使用IIFE模式了。
+```
+(function () { // open block
+statements;
+
+}()); // close block， 结尾分号必须写，否则会出现一些问题
+```
+Ben Alman 将这种模式称之为*函数表达式*。<br/>
+特点：<br/>
+1、是立即执行。<br/>
+2、必须是一个表达式<br/>
+3、别忘了后面的分号。<br/>
+IIFE 变体
+```
+var x = 23;
+(function (twice) {
+  console.log(twice); //  输出结果为46
+} (x * 2));
+
+// 上面代码相当于：
+var x = 23;
+(function () {
+  var twice = x * 2;
+  console.log(twice);
+}());
+```
