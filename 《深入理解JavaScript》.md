@@ -40,3 +40,29 @@ switch (fruit) {
 }
 ```
 case 后面可以跟数字类型、字符串类型、甚至是表达式。case 条件比较是使用严格比较模式（===）。
+
+### 函数
+函数的声明方式：<br/>
+1、函数式定义：
+```
+function funcname () {}
+```
+2、函数表达式：
+```
+var add = function () {};
+```
+具名函数式声明：
+```
+var add = function getAdd (n) {
+  if (n > 0) {
+    return n * getAdd(n-1);
+  } else {
+    return n;
+  }
+}
+// 具名函数式的名字只能在函数内部访问，如getAdd() 在外部访问就会抛出异常
+```
+3、函数构造器
+```
+var add = new Function ('x', 'y', 'return x + y');
+```
