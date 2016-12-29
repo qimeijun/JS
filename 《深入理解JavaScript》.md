@@ -94,3 +94,10 @@ var x = 23;
   console.log(twice);
 }());
 ```
+
+
+### this
+`this`是方法和函数中的隐式参数。
+1、在宽松模式下，函数中的this指的是全局(window) 对象<br/>
+2、在严格模式下，函数中的this总是undefined<br/>
+3、在对象的方法中，this指的就是方法所在的对象。
