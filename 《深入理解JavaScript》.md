@@ -97,7 +97,55 @@ var x = 23;
 
 
 ### this
-`this`是方法和函数中的隐式参数。
+`this`是方法和函数中的隐式参数。<br/>
 1、在宽松模式下，函数中的this指的是全局(window) 对象<br/>
 2、在严格模式下，函数中的this总是undefined<br/>
 3、在对象的方法中，this指的就是方法所在的对象。
+
+### 对象
+####1、单一对象
+```
+var jane  = {
+  name: 'jane',
+  descibe: function () {
+    return 'Person named '+ this.name;
+  }
+}
+```
+####2、对象间的原型关系
+两个对象之间的原型关系类似继承：每个对象都可以把另一个对象作为他的原型，并继承原型的所有属性。
+```
+var proto = {
+  describe: function () {
+    return 'name:'+ this.name;
+  }
+}
+var obj = {
+  [[Prototype]]: proto,
+  name: 'obj'
+}
+
+// 对象obj从proto 继承了describe 属性。proto 就是obj 的原型。
+// 指定obj的原型为proto的原型
+var obj = Object.create(proto);
+```
+
+####3、实例工厂的构造函数
+####4、构造函数之间的继承
+```
+// 给定一个构造函数Super, Sub 继承构造函数Super, Sub 继承了Super的所有属性、原型属性和实例属性。
+function Sub (prop1, prop2, prop3, prop4) {
+  Super.call(this, prop1, prop2);
+  this.prop3 = prop3;
+  this.prop4 = prop4;
+}
+
+// 或者可以这样
+Sub._super = Super.prototype;
+function Sub(prop1, prop2, prop3, prop4) {
+  Sub._super.constructor.call(this, prop1, prop2);
+  this.prop3 = prop3;
+  this.prop4 = prop4;
+}
+```
+通过new条用Sub时，它的隐式参数this指向一个新的实例， 它首先把实例传给Super，Super添加自己的实例属性，之后，Sub设置它自己的实例属性，该技巧是，不要通过new调用Super，因为这样会创建一个新的Super实例，相反，我们把Super作为普通函数调用，并传递当前（Sub）实例作为this的值。
